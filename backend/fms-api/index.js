@@ -81,7 +81,7 @@ app.get('/userList', (req, res) => {
   //   data: userList,
   // })
 })
-app.use(express.static(path.join(__dirname, './fms-web-main/projectjs/public')))
+app.use(express.static(path.join(__dirname, '../fms-web-main/projectjs/dist')))
 app.listen(3000, (err) => {
   err
     ? console.log('Fail to Start Server')
