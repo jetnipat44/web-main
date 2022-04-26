@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const cors = require('cors')
 const app = express()
+require('dotenv').config()
 app.use(cors())
 
 app.get('/sleep', (req, res) => {
@@ -19,10 +20,10 @@ app.get('/users', (req, res) => {
 app.get('/usersall', (req, res) => {
   var mysql = require('mysql')
   var con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'jet',
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASS || '1234',
+    database: process.env.DB_NAME || 'jet',
   })
 
   con.connect(function (err) {
@@ -44,10 +45,10 @@ app.get('/userList', (req, res) => {
   var userList = []
   var mysql = require('mysql')
   var con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'fms',
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASS || '1234',
+    database: process.env.DB_NAME || 'jet',
   })
 
   con.connect(function (err) {
